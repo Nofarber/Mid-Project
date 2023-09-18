@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const Context = createContext({
+export const UserContext = createContext({
   users: [
     {
         userName:'',
@@ -17,26 +17,32 @@ export const Context = createContext({
         favorites:[]
     }
   ],
-  furniture: [
-    {
-        title:'',
-        description:'',
-        photo:[],
-        category:'',
-        color:'',
-        condition:'',
-        publishDate:new Date,
-        isAtStorage:true,
-        adress:'',
-        donerName:'',
-        donerPhone:'',
-        furnitureID:'',
-    }
-  ],
   setUsers: () => {},
   createNewUser: () => {},
   login: () => {},
 });
+
+export const FurnitureContext = createContext({
+     furniture: [
+        {
+            title:'',
+            description:'',
+            photo:[],
+            category:'',
+            color:'',
+            condition:'',
+            publishDate:new Date,
+            isAtStorage:true,
+            adress:'',
+            donerName:'',
+            donerPhone:'',
+            furnitureID:'',
+        }
+    ],
+    setFurniture: () => {},
+})
+
+
 
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
@@ -46,7 +52,7 @@ const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ users, setUsers, createNewUser, login }}>
+    <UserContext.Provider value={{ users, setUsers,}}>
       {children}
     </UserContext.Provider>
   );
