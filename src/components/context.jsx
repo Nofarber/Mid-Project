@@ -60,24 +60,24 @@ const UserProvider = ({ children }) => {
 
 export default UserProvider;
 
-// const createNewUser = (newUser) => {
-//     setUsers((prev) => {
-//       if (prev.some((user) => user.username === newUser.username)) {
-//         return prev;
-//       }
-//       localStorage.setItem("users", JSON.stringify([...prev, newUser]));
-//       return [...prev, newUser];
-//     });
-//   };
+const createNewUser = (newUser) => {
+    setUsers((prev) => {
+      if (prev.some((user) => user.username === newUser.username)) {
+        return prev;
+      }
+      localStorage.setItem("users", JSON.stringify([...prev, newUser]));
+      return [...prev, newUser];
+    });
+  };
 
-//   const login = ({ username, password }) => {
-//     const userExists = users.find((user) => user.username === username);
-//     if (!userExists) {
-//       return alert("Wrong credentials!");
-//     }
-//     const passwordMatch = userExists.password === password;
-//     if (!passwordMatch) {
-//       return alert("Wrong credentials!");
-//     }
-//     return alert("Logged in!");
-//   };
+  const login = ({ username, password }) => {
+    const userExists = users.find((user) => user.username === username);
+    if (!userExists) {
+      return alert("Wrong credentials!");
+    }
+    const passwordMatch = userExists.password === password;
+    if (!passwordMatch) {
+      return alert("Wrong credentials!");
+    }
+    return alert("Logged in!");
+  };
