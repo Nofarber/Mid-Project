@@ -1,0 +1,23 @@
+#main-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.error-massage{
+    color: red;
+}
+
+#photo-div{
+    display: flex;
+    flex-direction: row;
+}
+
+.single-photo{
+    display: flex;
+    flex-direction: column;
+    border: 3px black solid;
+}
+
+.file-input{
+    display: none;
+}
