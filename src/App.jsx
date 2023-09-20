@@ -16,7 +16,8 @@ import Donate from './Components/Donate/Donate'
 
 
 //libreries
-import { Route, Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import { useFurniture } from './furnitureContext'
 
 function App() {
     const [count, setCount] = useState(0)
@@ -28,13 +29,14 @@ function App() {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/signUp" element={<SignUp />} />
-                <Route path="/Profile" element={<SignUp />} />
+                <Route path="/profile" element={<SignUp />} />
                 <Route path="/homePage" element={<HomePage />} />
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/productPage" element={<ProductPage />} />
                 <Route path="/confirmOrder" element={<ConfirmOrder />} />
                 <Route path="/orderConfirmed" element={<OrderConfirmed />} />
             </Routes>
+            <Footer />
         </>
     )
 }
@@ -42,6 +44,6 @@ function App() {
 export default App
 
 
-    // theme =
-    // main: '#00802D',
-    // secondary: '#37F715'
+// theme =
+// main: '#00802D',
+// secondary: '#37F715'
