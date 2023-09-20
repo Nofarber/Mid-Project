@@ -3,33 +3,42 @@ import './App.css'
 import { useState } from 'react'
 
 //components
-import LandingPage from LandingPage
-import SignUp from SignUp
-import HomePage from HomePage
-import Catalog from Catalog
-import ProductPage from ProductPage
-import ConfirmOrder from ConfirmOrder
-import OrderConfirmed from OrderConfirmed
+import LandingPage from './Components/LandingPage/LandingPage'
+import SignUp from './Components/SignUp/SignUp'
+import HomePage from './Components/SignUp/SignUp'
+import Catalog from './Components/Catalog/Catalog'
+import ProductPage from './Components/ProductPage/ProductPage'
+import ConfirmOrder from './Components/ConfirmOrder/ConfirmOrder'
+import OrderConfirmed from './Components/OrderConfirmed/OrderConfirmed'
 
+import Navbar from './Components/Navbar/Navbar'
 //libreries
-import { Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
     const [count, setCount] = useState(0)
 
+
     return (
         <>
-            <Router>
-                <Routes path="/" element={ <LandingPage /> } />
-                <Routes path="/signUp" element={ <SignUp /> } />
-                <Routes path="/homePage" element={ <HomePage /> } />
-                <Routes path="/catalog" element={ <Catalog /> } />
-                <Routes path="/productPage" element={ <ProductPage /> } />
-                <Routes path="/confirmOrder" element={ <ConfirmOrder /> } />
-                <Routes path="/orderConfirmed" element={ <OrderConfirmed /> } />
-            </Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/Profile" element={<SignUp />} />
+                <Route path="/homePage" element={<HomePage />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/productPage" element={<ProductPage />} />
+                <Route path="/confirmOrder" element={<ConfirmOrder />} />
+                <Route path="/orderConfirmed" element={<OrderConfirmed />} />
+            </Routes>
         </>
     )
 }
 
 export default App
+
+
+    // theme =
+    // main: '#00802D',
+    // secondary: '#37F715'
