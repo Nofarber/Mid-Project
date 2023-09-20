@@ -11,13 +11,11 @@ import ProductPage from './Components/ProductPage/ProductPage'
 import ConfirmOrder from './Components/ConfirmOrder/ConfirmOrder'
 import OrderConfirmed from './Components/OrderConfirmed/OrderConfirmed'
 import Navbar from './Components/Navbar/Navbar'
-import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import Donate from './Components/Donate/Donate'
 
 
 //libreries
-import { Routes, Route } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
 import { useFurniture } from './furnitureContext'
 
