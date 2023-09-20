@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 import './Donate.css'
 import { useFurniture } from "../../furnitureContext";
-import { useEffect,useRef } from "react";
-import { createRef } from "react";
+import axios from 'axios'
+import { useEffect } from "react";
 
 function Donate() {
 
@@ -13,13 +13,12 @@ function Donate() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const Furniture = useFurniture()
   const CreateNewFurniture = Furniture.createNewFurniture
-  const transferSelectedImadge = selectedImage.map((value)=>value&&URL.createObjectURL(value))
-
+  const [render,setRender]=useState(true)
 
     function OnSubmit(data) {
       const newFurniture = data
       newFurniture.furnitureID = CreateRandomFurnitureID()
-      newFurniture.photo = transferSelectedImadge 
+      newFurniture.photo = selectedImage
       newFurniture.publishDate = new Date
       CreateNewFurniture(newFurniture)
     }
@@ -45,6 +44,23 @@ function Donate() {
       setSelectedImage([...selectedImage,0],
       console.log(selectedImage),
       ) }
+      
+      const presetKey = 'h2jouxfr'
+      const cloudName = 'dhzuiixyx'
+
+      const HandleFile = (event,i)=> {
+        selectedImage.pop()
+        const file = event.target.files[0]
+        const formData = new FormData()
+        formData.append('file',file)
+        formData.append('upload_preset' , presetKey)
+        axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
+        .then(res => setSelectedImage([...selectedImage , res.data.secure_url]) )
+        .catch(err => console.log(err))
+        
+         }
+
+         useEffect(()=>{setSelectedImage(selectedImage.filter((v)=>v!==0))},[])
 
     
     return (
@@ -69,18 +85,10 @@ function Donate() {
       {selectedImage.map((value,i)=>
         <label key={i} className="single-photo">
         <>
-        <input ref={selectedImage[i]} type="file"  className="file-input" name="ImageStyle" onChange={(event) => {
-          console.log(selectedImage)
-          selectedImage[i]=event.target.files[0]
-          setSelectedImage([...selectedImage])}}/>
+        <input type="file"  className="file-input" name="ImageStyle" onChange={(event)=>HandleFile(event,i)}/>
           <button type="button" onClick={()=>setSelectedImage(selectedImage.filter((value)=>value!==selectedImage[i]))}>delete</button>
         </>
-          {selectedImage[i]&&<img 
-        key={i}
-        alt='not found'
-        width={"250px"}
-        src={URL.createObjectURL(selectedImage[i])}
-      />}
+        {selectedImage[i]&&<img src={selectedImage[i]} alt="not found" className="pic"/>}
         </label>)}
       </div>
       <label>category

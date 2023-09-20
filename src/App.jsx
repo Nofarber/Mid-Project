@@ -16,13 +16,8 @@ import Donate from './Components/Donate/Donate'
 
 //libreries
 import { Router, Routes, Route } from 'react-router-dom'
-import { useFurniture } from './furnitureContext'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const data = useFurniture()
-  
-console.log(data);
   return (
     <>
       <Header></Header>
