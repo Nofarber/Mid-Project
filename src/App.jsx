@@ -30,8 +30,9 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/profile" element={<SignUp />} />
-                <Route path="/homePage" element={<HomePage />} />
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/catalog" element={<Catalog />} />
+                <Route path="/donate" element={<Donate />} />
                 <Route path="/productPage" element={<ProductPage />} />
                 <Route path="/confirmOrder" element={<ConfirmOrder />} />
                 <Route path="/orderConfirmed" element={<OrderConfirmed />} />
