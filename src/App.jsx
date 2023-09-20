@@ -14,6 +14,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import Donate from './Components/Donate/Donate'
 
+import Navbar from './Components/Navbar/Navbar'
 //libreries
 import { Routes, Route } from 'react-router-dom'
 
