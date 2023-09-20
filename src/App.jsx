@@ -10,30 +10,38 @@ import Catalog from './Components/Catalog/Catalog'
 import ProductPage from './Components/ProductPage/ProductPage'
 import ConfirmOrder from './Components/ConfirmOrder/ConfirmOrder'
 import OrderConfirmed from './Components/OrderConfirmed/OrderConfirmed'
-import Header from './Components/Header/Header'
+import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import Donate from './Components/Donate/Donate'
 
+
 //libreries
-import { Router, Routes, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
-  return (
-    <>
-      <Header></Header>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/homePage" element={<HomePage />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/productPage" element={<ProductPage />} />
-        <Route path="/confirmOrder" element={<ConfirmOrder />} />
-        <Route path="/orderConfirmed" element={<OrderConfirmed />} />
-        <Route path="/Donate" element={<Donate />} />
-      </Routes>
-      <Footer></Footer>
-    </>
-  )
+    const [count, setCount] = useState(0)
+
+
+    return (
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/Profile" element={<SignUp />} />
+                <Route path="/homePage" element={<HomePage />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/productPage" element={<ProductPage />} />
+                <Route path="/confirmOrder" element={<ConfirmOrder />} />
+                <Route path="/orderConfirmed" element={<OrderConfirmed />} />
+            </Routes>
+        </>
+    )
 }
 
 export default App
+
+
+    // theme =
+    // main: '#00802D',
+    // secondary: '#37F715'
