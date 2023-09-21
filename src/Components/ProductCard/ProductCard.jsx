@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function ProductCard({info}) {
 
   return (
-    <>
+    <div id='product-card'>
     <Link to={'/productPage'} state={info}>
       <span className="product-card" >
       <img className="product-card__image" src={info.photo[0]?info.photo[0]:'https://scalebranding.com/wp-content/uploads/2022/02/home-furniture-logo_2.jpg'} />
@@ -22,7 +22,7 @@ function ProductCard({info}) {
       </button>
     </span>
     </Link>
-    </>
+    </div>
     
   )
 }

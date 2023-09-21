@@ -65,6 +65,7 @@ function Donate() {
     
          return (
            <>
+           <div id="donate-page">
       <form onSubmit={handleSubmit(OnSubmit)} id="main-form" >
       <label>
         <p>:שם המוצר</p>
@@ -143,10 +144,11 @@ function Donate() {
         maxLength: (v) => v.length <= 40 || 'The address should have less than 40 characters',
       } })} />
       {errors.address?.message && (
-    <small className="error-massage">{errors.address.message}</small>)}
+        <small className="error-massage">{errors.address.message}</small>)}
       </label>
       <button type="submit" id="submit-button2">submit</button>
       </form>
+        </div>
       </>
     )
   }

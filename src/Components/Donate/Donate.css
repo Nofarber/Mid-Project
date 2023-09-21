@@ -62,14 +62,14 @@
     
 }
 
-p{
+#donate-page p{
     text-align: end;
     color: #00802D;
     font-size: 20px;
     margin-bottom: 0px;
 }
 
-h1{
+#donate-page h1{
     color: #00802D;
 }
 
@@ -82,7 +82,7 @@ h1{
     margin: 5px;
   }
 
-select{
+  #donate-page select{
     border-radius: 40px;
     padding: 10px; 
     border: 1px solid #ccc; 
