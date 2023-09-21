@@ -13,14 +13,14 @@
     width: 400px;
 }
 
-p{
+#entire-page-signup p{
     text-align: end;
     color: #00802D;
     font-size: 20px;
     margin-bottom: 0px;
 }
 
-h1{
+#entire-page-signup h1{
     color: #00802D;
 }
 
@@ -33,7 +33,7 @@ h1{
     margin: 5px;
   }
 
-select{
+  #entire-page-signup select{
     border-radius: 40px;
     padding: 10px; 
     border: 1px solid #ccc; 

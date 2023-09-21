@@ -16,7 +16,7 @@ function LandingPage() {
   
 
   return (
-    <>
+    <div id="landing-page">
     <div id="vid-container">
     <video autoPlay muted playsInline loop id="hero-section">
      <source src="https://video.wixstatic.com/video/090e02_2af1e46e688c405e988e8462f2628154/720p/mp4/file.mp4" type="video/mp4"/>
@@ -39,7 +39,7 @@ function LandingPage() {
     </div>
       </div>
     </div>
-    </>
+    </div>
   )
 }
 export default LandingPage

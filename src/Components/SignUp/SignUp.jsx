@@ -14,6 +14,7 @@ const CreateNewUser =userContext.createNewUser
     const newUser = data
     newUser.favorites = []
     newUser.userID = ''
+    newUser.pickUpTime =[]
     console.log(newUser);
     CreateNewUser(newUser)
   }
