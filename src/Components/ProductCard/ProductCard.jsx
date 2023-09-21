@@ -10,7 +10,10 @@ function ProductCard({info}) {
       <span className="product-card" >
       <img className="product-card__image" src={info.photo[0]?info.photo[0]:'https://scalebranding.com/wp-content/uploads/2022/02/home-furniture-logo_2.jpg'} />
       <p className="product-card__brand">{info.title}</p>
-      <p className="product-card__description">{info.discription}</p>
+      {/* <p className="product-card__description">{info.description}</p> */}
+      <p className="product-card__description">{info.category}</p>
+      <p className="product-card__description">{info.color}</p>
+      <p className="product-card__description">{info.condition}</p>
       <p className="product-card__price">See more!</p>
       <button className="product-card__btn-wishlist">
         <svg viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
+// import MockFurniture from '../MOCK_FURNITURE.json' 
+import MockFurniture from '../BIG_MOCK_FURNITURE.json' 
 
 export const FurnitureContext = createContext({
     furniture: [ ],
@@ -14,22 +16,24 @@ export const useFurniture = () => {
 
 const FurnitureProvider = ({ children }) => {
     const [furniture, setFurniture] = useState(
-        JSON.parse(localStorage.getItem("Furniture")) || [
-            {
-                title: '',
-                description: '',
-                photo: [],
-                category: '',
-                color: '',
-                condition: '',
-                publishDate: new Date,
-                isAtStorage: true,
-                address: '',
-                donerName: '',
-                donerPhone: '',
-                furnitureID: '',
-            }
-        ]
+        JSON.parse(localStorage.getItem("Furniture")) || 
+        // [
+        //     {
+        //         title: '',
+        //         description: '',
+        //         photo: [],
+        //         category: '',
+        //         color: '',
+        //         condition: '',
+        //         publishDate: new Date,
+        //         isAtStorage: true,
+        //         address: '',
+        //         donerName: '',
+        //         donerPhone: '',
+        //         furnitureID: '',
+        //     }
+        // ]
+        MockFurniture
     );
 
 
@@ -44,6 +48,10 @@ const FurnitureProvider = ({ children }) => {
             return [...prev, newFurniture];
         });
     };
+
+    // const createDummyData = () => {
+    //     setFurniture(MockFurniture)
+    // }
 
     return (
         <FurnitureContext.Provider value={{ furniture, setFurniture, createNewFurniture }}>

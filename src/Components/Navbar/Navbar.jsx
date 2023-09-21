@@ -288,7 +288,6 @@ function Navbar() {
                                                     color: 'white',
                                                 }, bgcolor: "#00802D",
                                             }}
-                                            // sx={{ bgcolor: "#00802D" }}
                                             >
                                                 Login
                                             </Button>
