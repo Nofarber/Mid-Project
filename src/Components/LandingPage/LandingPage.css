@@ -49,10 +49,6 @@ select{
     justify-content: end;
 }
 
-label{
-    margin: 20px;
-}
-
 #submit-button{
     background-color: #00802D;
     color: white;

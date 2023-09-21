@@ -99,7 +99,7 @@ select{
     justify-content: end;
 }
 
-label{
+#main-form label{
     margin: 20px;
 }
 
