@@ -162,7 +162,7 @@ function Navbar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={() => { navigate(`/${page}`), handleCloseNavMenu }}
+                                onClick={() => { (!isConnected && page==='Home' ? alert("Please log in!") : navigate(`/${page}`)), handleCloseNavMenu }}
                                 // onClick={() => { navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
@@ -202,7 +202,7 @@ function Navbar() {
                                     <MenuItem key={settings[0]} onClick={() => { navigate("/Profile"), handleCloseUserMenu }}>
                                         <Typography textAlign="center">{settings[0]}</Typography>
                                     </MenuItem>
-                                    <MenuItem key={settings[1]} onClick={() => { handleCloseUserMenu, userData.logout() }}>
+                                    <MenuItem key={settings[1]} onClick={() => { handleCloseUserMenu,navigate("/"), userData.logout() }}>
                                         <Typography textAlign="center">{settings[1]}</Typography>
                                     </MenuItem>
                                 </Menu>
