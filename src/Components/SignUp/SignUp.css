@@ -5,6 +5,60 @@
 #main-form{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.174);
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+p{
+    text-align: end;
+    color: #00802D;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+h1{
+    color: #00802D;
+}
+
+.sign-in-input {
+    border-radius: 40px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    outline: none;  
+    width: 100px;
+    margin: 5px;
+  }
+
+select{
+    border-radius: 40px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    outline: none;  
+    width: 370px;
+}
+
+  #entire-page-signup{
+    margin-top: 100px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+label{
+    margin: 20px;
+}
+
+#submit-button{
+    background-color: #00802D;
+    color: white;
+    align-self: center;   
+    scale: 2;
+    margin: 20px;
+    margin-top: 40px;
 }

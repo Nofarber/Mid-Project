@@ -14,14 +14,10 @@ import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import Donate from './Components/Donate/Donate'
 
-
 //libreries
 import { Routes, Route } from 'react-router-dom'
-import { useFurniture } from './furnitureContext'
 
 function App() {
-    const [count, setCount] = useState(0)
-
 
     return (
         <>

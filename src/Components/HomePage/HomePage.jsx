@@ -3,6 +3,7 @@ import { useCredentials } from "../../context"
 import { useFurniture } from "../../furnitureContext"
 import ProductCard from '../ProductCard/ProductCard'
 import { useEffect } from "react"
+import './HomePage.css'
 
 function HomePage() {
 const furnitureData = useFurniture()
@@ -29,10 +30,14 @@ function WhoIsConnected() {
 
   return (
     <>
-    <div>hello user</div>
-    <div>{orderedByNew.map((value,i)=><ProductCard key={i} info={value}/>)}</div>
+    <div id="entire-page">
+    <h1>!ברוך הבא</h1>
+    <h2>:ראה מה חדש במחסן</h2>
+    <div className="new-products">{orderedByNew.map((value,i)=><ProductCard key={i} info={value}/>)}</div>
     <button onClick={()=>console.log(orderedByNew)}>test</button>
+    <h2>:המועדפים שלך</h2>
     <div>{favorites.map((value,i)=><ProductCard key={i} info={value}/>)}</div>
+    </div> 
     </>
   )
 }
