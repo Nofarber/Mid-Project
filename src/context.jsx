@@ -15,7 +15,7 @@ export const UserContext = createContext({
             roll: '',
             userID: '',
             phoneNumber: 0,
-            favorites: []
+            favorites: [],
         }
     ],
     isConnected: Boolean,
