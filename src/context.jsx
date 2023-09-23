@@ -15,7 +15,7 @@ export const UserContext = createContext({
             roll: '',
             userID: '',
             phoneNumber: 0,
-            favorites: [],
+            favorites: []
         }
     ],
     isConnected: Boolean,
@@ -26,7 +26,7 @@ export const UserContext = createContext({
     createNewUser: () => { },
     login: () => { },
     logout: () => { },
-    UpdateUser: ()=>{}
+    UpdateUser: () => { }
 });
 
 export const useCredentials = () => {
@@ -36,9 +36,9 @@ export const useCredentials = () => {
 
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
-  
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || [
+
+    const [users, setUsers] = useState(
+        JSON.parse(localStorage.getItem("users")) || [
             {
                 userName: 'bob',
                 password: '1234',
@@ -52,7 +52,7 @@ const UserProvider = ({ children }) => {
                 userID: '',
                 phoneNumber: 0,
                 favorites: []
-              }
+            }
         ]
     );
 
@@ -63,41 +63,41 @@ const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(
         JSON.parse(localStorage.getItem("currentUser")) || {}
     );
-    
+
     const createNewUser = (newUser) => {
-      setUsers((prev) => {
-        if (prev.some((user) => user.userName === newUser.userName)) {
-          return prev,
-          alert('user already exsists')
-        }
-        localStorage.setItem("users", JSON.stringify([...prev, newUser]));
-        return [...prev, newUser];
-      });
+        setUsers((prev) => {
+            if (prev.some((user) => user.userName === newUser.userName)) {
+                return prev,
+                    alert('user already exsists')
+            }
+            localStorage.setItem("users", JSON.stringify([...prev, newUser]));
+            return [...prev, newUser];
+        });
     };
-    
+
     const login = ({ username, password, staySignedIn }) => {
-      console.log(username);
-      console.log(password);
-      console.log(users);
-      const userExists = users.find((user) => user.userName === username);
-      if (!userExists) {
-        return alert("Wrong credentials!");
-      }
+        console.log(username);
+        console.log(password);
+        console.log(users);
+        const userExists = users.find((user) => user.userName === username);
+        if (!userExists) {
+            return alert("Wrong credentials!");
+        }
         const passwordMatch = userExists.password === password;
         if (!passwordMatch) {
             return alert("Wrong credentials!");
-          }
-          if (staySignedIn) {
+        }
+        if (staySignedIn) {
             localStorage.setItem("isConnected", JSON.stringify(Boolean(true)));
             localStorage.setItem("currentUser", JSON.stringify(userExists));
-          }
-          setIsConnected(true);
-          setCurrentUser(userExists);
-        };
+        }
+        setIsConnected(true);
+        setCurrentUser(userExists);
+    };
 
-    const UpdateUser = ()=>{localStorage.setItem("users", JSON.stringify(users)), console.log(users);}
-    useEffect(()=>{UpdateUser},[users])
-        
+    const UpdateUser = () => { localStorage.setItem("users", JSON.stringify(users)), console.log(users); }
+    useEffect(() => { UpdateUser }, [users])
+
     const logout = () => {
         localStorage.setItem("isConnected", JSON.stringify(Boolean(false)));
         setIsConnected(false)
