@@ -15,7 +15,8 @@ export const UserContext = createContext({
       roll: '',
       userID: '',
       phoneNumber: 0,
-      favorites: []
+      favorites: [],
+      pickUpTime: []
     }
   ],
   isConnected: Boolean,
@@ -51,7 +52,9 @@ const UserProvider = ({ children }) => {
         roll: '',
         userID: '',
         phoneNumber: 0,
-        favorites: []
+        favorites: [],
+        pickUpTime: []
+      
       }
     ]
     );
@@ -95,9 +98,13 @@ const UserProvider = ({ children }) => {
         setCurrentUser(userExists);
       };
       
-      const UpdateUser = ()=>{localStorage.setItem("users", JSON.stringify(users)), console.log(users);}
-      useEffect(()=>{UpdateUser},[users])
-      
+      const UpdateUser = (info)=>{
+        setUsers(info)
+        localStorage.setItem("users", JSON.stringify(info))
+        return [info]
+      }
+
+        
       const logout = () => {
         localStorage.setItem("isConnected", JSON.stringify(Boolean(false)));
         setIsConnected(false)

@@ -19,7 +19,7 @@ function Donate() {
       const newFurniture = data
       newFurniture.furnitureID = CreateRandomFurnitureID()
       newFurniture.photo = selectedImage
-      newFurniture.publishDate = new Date
+      newFurniture.publishDate = `${(new Date).getDate()}/${(new Date).getMonth() +1 }/${(new Date).getFullYear()}`
       CreateNewFurniture(newFurniture)
     }
 
@@ -72,14 +72,13 @@ function Donate() {
       <input type="text" placeholder="title" {...register('title', { required: 'title is required', validate: {
         minLength: (v) => v.length >= 5 || 'The title should have at least 5 characters',
         maxLength: (v) => v.length <= 40 || 'The title should have less than 40 characters',
-        matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v)||'title must contain only letters, numbers and _',
       } })} />
       {errors.title?.message && (
         <small className="error-massage">{errors.title.message}</small>)}
       </label>
       <label>
         <p>:תיאור המוצר</p>
-      <input type="text" id="descirtion" {...register('discription', { required: 'discription is required'})} />
+      <input type="text" id="descirtion" {...register('description', { required: 'discription is required'})} />
       {errors.discription?.message && (
         <small className="error-massage">{errors.title.message}</small>)}
       </label>
@@ -94,17 +93,39 @@ function Donate() {
       </div>
       <label>
         <p>:סוג המוצר</p>
-      <input type="text" placeholder="category" {...register('category', { required: 'category is required', validate: {
-        maxLength: (v) => v.length <= 40 || 'The category should have less than 40 characters',
-        matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v)||'category must contain only letters, numbers and _',
-      } })} />
+        <select  {...register('category')}>
+        <option value="Sofas">Sofas</option>
+        <option value="Beds">Beds</option>
+        <option value="Tables">Tables</option>
+        <option value="Storage">Storage</option>
+        <option value="Electronics">Electronics</option>
+      </select>
+      </label>
+      <label>
+        <p>:מצב</p>
+        <select  {...register('condition')}>
+        <option value="Like New">Like New</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Gently Used">Gently Used</option>
+        <option value="Used">Used</option>
+        <option value="Salvage">Salvage</option>
+      </select>
       </label>
       <label>
       <p>:צבע</p>
       <select  {...register('color')}>
-        <option value="blue">blue</option>
-        <option value="red">red</option>
-        <option value="yellow">yellow</option>
+        <option value="Red">Red</option>
+        <option value="Orange">Orange</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+        <option value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Grey">Grey</option>
+        <option value="Brown">Brown</option>
+        <option value="MultiColor">MultiColor</option>
       </select>
       </label>
       <label>

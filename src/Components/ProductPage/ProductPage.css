@@ -54,6 +54,7 @@
     flex-direction: column;
     align-items: end;
     justify-content: right;
+    text-align: right;
 }
 
 #product-img-container{
