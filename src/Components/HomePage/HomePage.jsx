@@ -27,6 +27,7 @@ function HomePage() {
       const infoOfConnected = users.find((value=>value.userName === currentUser.userName))
       const orderedFurniture = infoOfConnected.pickUpTime
       const [favoritesFurniture,setFavoritesFurniture] = useState([])
+      const [pickUpFurniture,setPickUpFurniture] = useState([])
       
       useEffect(()=>{NewestFurniture(),WhoIsConnected()},[])
       
@@ -36,12 +37,16 @@ function HomePage() {
       
       function WhoIsConnected() {
         const tempFurnArray = []
+        const tempFurnArray2 = []
         const fav = infoOfConnected.favorites
   fav.forEach((favTitle)=>{
     furniture.some((e)=>e.furnitureID===favTitle) && tempFurnArray.push(furniture.find((e)=>e.furnitureID === favTitle))
   })
+  orderedFurniture.forEach((orderedTitle)=>{
+    furniture.some((e)=>e.title===orderedTitle.title) && tempFurnArray2.push(furniture.find((e)=>e.title === orderedTitle.title))
+  })
   setFavoritesFurniture(tempFurnArray)
-  console.log(tempFurnArray)
+  setPickUpFurniture(tempFurnArray2)
 }
 
 
@@ -49,18 +54,35 @@ function HomePage() {
 return (
   <>
     <div id="entire-page">
+      <div>
     <h1>!ברוך הבא</h1>
     <h2>:ראה מה חדש במחסן</h2>
+      </div>
+    <div className="product-container orders" id="new-container">
     <div className="new-products">{orderedByNew.map((value,i)=><ProductCard key={i} info={value}/>)}</div>
-    <button onClick={()=>console.log(orderedFurniture)}>test</button>
-    <h2>:המועדפים שלך</h2>
-    <div>{favoritesFurniture.map((value,i)=><ProductCard key={i} info={value}/>)}</div> 
+    </div>
+    <div className="orders">
     <h2>:הזמנות</h2>
     <ul>
-      {orderedFurniture.map((value,i)=>
-        <h2 key={i}>{`${value.title} - ${value.year}/${value.month}/${value.date}`}</h2>
+      {pickUpFurniture[0] && orderedFurniture.map((value,i)=>
+      <li key={i} className="li-ordered">
+        <p>
+        <h2 >{`${value.title}`}</h2>
+        <h3 >{`${value.year}/${value.month}/${value.date}`}</h3>
+        <h3 >{`${pickUpFurniture[i].address}`}</h3>
+        </p>
+        <ProductCard info={pickUpFurniture[i]}/>
+      </li>
       )}
     </ul>
+    </div>
+    <div>
+    <button onClick={()=>console.log(orderedFurniture)}>test</button>
+    <h2>:המועדפים שלך</h2>
+    </div >
+    <div className="product-container" id="fav-container">
+    <div className="new-products">{favoritesFurniture.map((value,i)=><ProductCard key={i} info={value}/>)}</div> 
+    </div>
     </div> 
     </>
   )

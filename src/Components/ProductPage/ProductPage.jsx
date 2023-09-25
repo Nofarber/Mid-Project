@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { useFurniture } from "../../furnitureContext"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import './productPage.css'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
@@ -15,17 +15,27 @@ function ProductPage() {
   const [hours,setHours]=useState(16)
   const credentials = useCredentials()
   const users =credentials.users
-  const setUser = credentials.setUsers
   const connected = credentials.currentUser
   const isSomeOneConnected = credentials.isConnected
   const Navigate = useNavigate()
+  const update = credentials.UpdateUser
+  const [favButtonBG,setFavButtonBG]=useState('whitesmoke')
 
+ useEffect(()=>{
+      const indexOfUser = users.findIndex((user)=>user.userName === connected.userName)
+      const text = users[indexOfUser].favorites;
+      if (text.includes(info.furnitureID)){
+        setFavButtonBG('whitesmoke')
+      } else{
+        setFavButtonBG('#00802D')
+ }},[])
+  
   function FindCurrentUser (){
     if (credentials.isConnected){
     const tempUsersArray = users
     const indexOfUser = tempUsersArray.findIndex((user)=>user.userName === connected.userName)
     tempUsersArray[indexOfUser].pickUpTime? tempUsersArray[indexOfUser].pickUpTime = [...tempUsersArray[indexOfUser].pickUpTime, selectedDate]: tempUsersArray[indexOfUser].pickUpTime = [selectedDate]; 
-    setUser([...tempUsersArray])
+    update([...tempUsersArray])
     Navigate('/confirmOrder')}
     else{
       return alert('You need to sign-in in order to claim a donation.')
@@ -38,10 +48,14 @@ function ProductPage() {
       const indexOfUser = tempUsersArray.findIndex((user)=>user.userName === connected.userName)
       const text = users[indexOfUser].favorites;
       if (text.includes(info.furnitureID)){
-        return alert('already added to wishlist')      
+        tempUsersArray[indexOfUser].favorites? tempUsersArray[indexOfUser].favorites = [...tempUsersArray[indexOfUser].favorites.filter((v)=>v!== info.furnitureID)]: tempUsersArray[indexOfUser].favorites = [info.furnitureID]; 
+        update([...tempUsersArray])
+        setFavButtonBG('whitesmoke')
+        console.log(`${info.title} removed from ${tempUsersArray[indexOfUser].userName}'s wishlist!`);
       } else{
         tempUsersArray[indexOfUser].favorites? tempUsersArray[indexOfUser].favorites = [...tempUsersArray[indexOfUser].favorites, info.furnitureID]: tempUsersArray[indexOfUser].favorites = [info.furnitureID]; 
-        setUser([...tempUsersArray])
+        update([...tempUsersArray])
+        setFavButtonBG('#00802D')
         console.log(`${info.title} added to ${tempUsersArray[indexOfUser].userName}'s wishlist!`);
       }} else{
         return alert('You need to sign-in in order to add to wishlist.')
@@ -67,6 +81,7 @@ function SwichPic() {
   <div style={{height:"68px"}}></div>
 <h1>{info.title}</h1>
 {/* {users.some(v=>v.favorites.includes(info.furnitureID))&&<h3>in wishlis</h3>} */}
+  <button id="add-favorite-button" style={{backgroundColor: favButtonBG}} type="button" onClick={()=>{AddToFavorites()}}>מועדפים</button>
 <div id="product-img-container">
   <div id="img-container">
 <img src={info.photo[picIndex]} alt="not found" onClick={SwichPic} className="picture"/>
@@ -92,7 +107,6 @@ function SwichPic() {
   <span>:</span>
   <input id="time-input" type="number" max={23} min={0} value={hours} onChange={(e)=>setHours(e.target.value)}/>
   <button id="confirm-order-button" type="button" onClick={()=>{FindCurrentUser()}}>!הזמן</button>
-  <button id="add-favorite-button" type="button" onClick={()=>{AddToFavorites()}}>מועדפים</button>
   <button id="add-favorite-button" type="button" onClick={()=>{console.log(users);}}>test</button>
   </div>}
 </div>
