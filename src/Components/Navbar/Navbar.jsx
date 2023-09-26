@@ -19,7 +19,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Home', 'Catalog', 'Donate'];
+const pages = ['Home', 'Catalog', 'Donate', 'Money Donation'];
 const settings = ['Profile', 'Logout'];
 
 function Navbar() {

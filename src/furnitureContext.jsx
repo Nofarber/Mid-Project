@@ -7,7 +7,8 @@ import MockFurniture from '../MOCK_FURNITURE.json'
 export const FurnitureContext = createContext({
     furniture: [ ],
     setFurniture: () => { },
-    createNewFurniture: () => { }
+    createNewFurniture: () => { },
+    UpdateFurniture: () => { }
 })
 
 export const useFurniture = () => {
@@ -52,9 +53,17 @@ const FurnitureProvider = ({ children }) => {
     // const createDummyData = () => {
     //     setFurniture(MockFurniture)
     // }
+    const UpdateFurniture = (info)=>{
+        const tempFurnitureArray = furniture.filter((e)=> e.furnitureID !== info.furnitureID)
+        tempFurnitureArray.push(info)
+        setFurniture(tempFurnitureArray)
+        localStorage.setItem("Furniture", JSON.stringify(tempFurnitureArray))
+        return [tempFurnitureArray]
+      }
+
 
     return (
-        <FurnitureContext.Provider value={{ furniture, setFurniture, createNewFurniture }}>
+        <FurnitureContext.Provider value={{ furniture, setFurniture, createNewFurniture, UpdateFurniture }}>
             {children}
         </FurnitureContext.Provider>
     )

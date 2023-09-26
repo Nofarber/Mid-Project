@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './ProductCard.css'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,9 +11,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useCredentials } from '../../context';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, CardActionArea } from '@mui/material';
+import { Box, CardActionArea, Dialog, DialogActions } from '@mui/material';
 import SkipNextRoundedIcon from '@mui/icons-material/SkipNextRounded';
 import SkipPreviousRoundedIcon from '@mui/icons-material/SkipPreviousRounded';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -23,6 +25,15 @@ export default function ProductCard({ info }) {
     const [color, setColor] = React.useState();
     const [photoDisplay, setPhotoDisplay] = React.useState(0);
     const navigate = useNavigate();
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
         if (userData.isConnected && userData.currentUser.favorites.length > 0) {
@@ -34,7 +45,7 @@ export default function ProductCard({ info }) {
                 setColor("default");
             }
         }
-    }, [info, userData.isConnected])
+    }, [info, userData])
 
 
     function handleFavorites() {
@@ -57,30 +68,29 @@ export default function ProductCard({ info }) {
             userData.setCurrentUser(tempUser)
         }
         setFavorite(!favorite);
+        userData.UpdateUser(userData.currentUser);
     }
 
-    function nextImage(){
-        if(info.photo[photoDisplay+1])
-        {
-            setPhotoDisplay(photoDisplay+1)
+    function nextImage() {
+        if (info.photo[photoDisplay + 1]) {
+            setPhotoDisplay(photoDisplay + 1)
         }
-        else{
+        else {
             setPhotoDisplay(0)
         }
     };
 
-    function prevImage(){
-        if(photoDisplay>0){
-            setPhotoDisplay(photoDisplay-1)
+    function prevImage() {
+        if (photoDisplay > 0) {
+            setPhotoDisplay(photoDisplay - 1)
         }
-        else
-        {
-            setPhotoDisplay(info.photo.length-1)
+        else {
+            setPhotoDisplay(info.photo.length - 1)
         }
     };
 
     return (
-        <Card elevation={24} sx={{ width: 330, height: 430, marginTop: "50px", marginRight: "20px" }}>
+        <Card elevation={24} sx={{ width: 330, height: 430, marginTop: "50px", transition: "0.3s", ':hover': { scale: "1.05" } }}>
             <CardHeader
                 // avatar={
                 //     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -100,7 +110,8 @@ export default function ProductCard({ info }) {
                 subheader={info.condition + ", " + info.color}
             />
             {/* <Link to={'/productPage'} state={info}> */}
-            <CardActionArea onClick={() => { navigate("/productPage", { state: { info } }) }}>
+            <CardActionArea onClick={handleClickOpen}>
+                {/* () => { navigate("/productPage", { state: { info } }) } */}
                 <CardMedia
                     component="img"
                     height="194"
@@ -108,6 +119,28 @@ export default function ProductCard({ info }) {
                     alt="Can't load image"
                 />
             </CardActionArea>
+            <Dialog onClose={handleClose} open={open} >
+            <Box  sx={{position: 'fixed', backgroundColor: "white", borderBottomRightRadius:'20px'}}>
+                    <IconButton aria-label="Next image" onClick={nextImage} >
+                        <SkipPreviousRoundedIcon />
+                    </IconButton>
+                <IconButton aria-label="Close Dialog" onClick={handleClose} >
+                    <CloseIcon />
+                </IconButton>
+                    <IconButton aria-label="Prev image" onClick={prevImage}>
+                        <SkipNextRoundedIcon />
+                    </IconButton>
+                </Box>
+            {/* sx={{ scale: "2" }} */}
+                <CardMedia
+                    component="img"
+                    // height="194"
+                    image={info.photo[0] ? info.photo[photoDisplay] : 'https://scalebranding.com/wp-content/uploads/2022/02/home-furniture-logo_2.jpg'}
+                    alt="Can't load image"
+                    sx={{width: "80vw"}}
+                />
+                
+            </Dialog>
             <Box textAlign={'center'}>
                 <IconButton aria-label="delete" onClick={nextImage}>
                     <SkipPreviousRoundedIcon />

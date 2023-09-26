@@ -32,7 +32,6 @@ export const UserContext = createContext({
 
 export const useCredentials = () => {
   return useContext(UserContext)
-  return useContext(UserContext)
 }
 
 
@@ -44,18 +43,17 @@ const UserProvider = ({ children }) => {
       {
         userName: 'bob',
         password: '1234',
-        mail: '',
+        mail: "user@gmail.com",
         firstName: 'Eddie',
         lastName: 'Zvonov',
-        enlistment: 'new Date',
-        discharge: new Date,
-        tashType: '',
-        roll: '',
+        enlistment: "2020-11-26",
+        discharge: "2023-09-26",
+        tashType: "lone soldier",
+        roll: 'jsahdjkad',
         userID: '',
-        phoneNumber: 0,
+        phoneNumber: "0558810978",
         favorites: ["3555653268253829", "4041599669330"],
         pickUpTime: []
-      
       }
     ]
     );
@@ -66,7 +64,7 @@ const UserProvider = ({ children }) => {
       )
       
       const [currentUser, setCurrentUser] = useState(
-      JSON.parse(localStorage.getItem("isConnected")) || Boolean(false)
+      JSON.parse(localStorage.getItem("currentUser")) || Boolean(false)
       )
         
         const createNewUser = (newUser) => {
@@ -104,6 +102,7 @@ const UserProvider = ({ children }) => {
         const tempUsersArray = users.filter((e)=> e.userName !== info.userName)
         tempUsersArray.push(info)
         setUsers(tempUsersArray)
+        setCurrentUser(info)
         localStorage.setItem("users", JSON.stringify(tempUsersArray))
         return [tempUsersArray]
       }

@@ -32,7 +32,7 @@ function App() {
                 <Route path="/productPage" element={<ProductPage />} />
                 <Route path="/confirmOrder" element={<ConfirmOrder />} />
                 <Route path="/orderConfirmed" element={<OrderConfirmed />} />
-                <Route path="/payment" element={<Payment />} />
+                <Route path="/money donation" element={<Payment />} />
             </Routes>
             <Footer />
         </>
