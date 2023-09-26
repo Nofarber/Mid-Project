@@ -83,7 +83,7 @@ function ProductPage() {
 
   function FindCurrentUser() {
     if (isSomeOneConnected) {
-      if(Boolean(!info.ordered)){
+      if(!info.ordered){
         const tempUsersArray = users
         const indexOfUser = tempUsersArray.findIndex((user) => user.userName === connected.userName)
         tempUsersArray[indexOfUser].pickUpTime ? tempUsersArray[indexOfUser].pickUpTime = [...tempUsersArray[indexOfUser].pickUpTime, selectedDate] : tempUsersArray[indexOfUser].pickUpTime = [selectedDate];
