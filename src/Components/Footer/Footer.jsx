@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div>Footer</div>
+    <div style={{width: "100vw", height:"20vh", backgroundColor:"white"}}></div>
   )
 }
 export default Footer
