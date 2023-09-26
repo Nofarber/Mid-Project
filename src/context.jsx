@@ -51,7 +51,7 @@ const UserProvider = ({ children }) => {
         roll: '',
         userID: '',
         phoneNumber: 0,
-        favorites: []
+        favorites: ["3555653268253829", "4041599669330"]
       }
     ]
     );

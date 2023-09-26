@@ -15,6 +15,7 @@ import Footer from './Components/Footer/Footer'
 import Donate from './Components/Donate/Donate'
 //libreries
 import { Routes, Route } from 'react-router-dom'
+import Payment from './Payment/Payment'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/productPage" element={<ProductPage />} />
                 <Route path="/confirmOrder" element={<ConfirmOrder />} />
                 <Route path="/orderConfirmed" element={<OrderConfirmed />} />
+                <Route path="/payment" element={<Payment />} />
             </Routes>
             <Footer />
         </>
