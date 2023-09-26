@@ -22,13 +22,14 @@ function ProductPage() {
   const [favButtonBG,setFavButtonBG]=useState('whitesmoke')
 
  useEffect(()=>{
-      const indexOfUser = users.findIndex((user)=>user.userName === connected.userName)
-      const text = users[indexOfUser].favorites;
-      if (text.includes(info.furnitureID)){
-        setFavButtonBG('whitesmoke')
-      } else{
-        setFavButtonBG('#00802D')
- }},[])
+   if (isSomeOneConnected) {
+    const indexOfUser = users.findIndex((user)=>user.userName === connected.userName)
+    const text = users[indexOfUser].favorites;
+    if (text.includes(info.furnitureID)){
+      setFavButtonBG('whitesmoke')
+    } else{
+      setFavButtonBG('#00802D')
+    }}},[])
   
   function FindCurrentUser (){
     if (isSomeOneConnected){

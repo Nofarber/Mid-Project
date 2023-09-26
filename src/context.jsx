@@ -32,7 +32,6 @@ export const UserContext = createContext({
 
 export const useCredentials = () => {
   return useContext(UserContext)
-  return useContext(UserContext)
 }
 
 
