@@ -1,14 +1,15 @@
 import { useState,useContext } from "react"
 import {  useCredentials } from '../../context'
-import { Link, useNavigate } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 import './SignUp.css'
 
 function SignUp() {
+
 const userContext = useCredentials()
 const { register, handleSubmit, formState: { errors } } = useForm();
 const CreateNewUser =userContext.createNewUser
-
+const navigate = useNavigate()
 
   function OnSubmit(data) {
     const newUser = data
@@ -17,6 +18,8 @@ const CreateNewUser =userContext.createNewUser
     newUser.pickUpTime =[]
     console.log(newUser);
     CreateNewUser(newUser)
+    navigate('/')
+    return alert('New user created!')
   }
 
 
