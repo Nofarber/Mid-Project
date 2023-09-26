@@ -33,10 +33,11 @@ function Catalog() {
         }
     };
 
-    const [displayed, setDisplayed] = React.useState(furniture);
+    const [displayed, setDisplayed] = React.useState(furniture.filter((e) => {return Boolean(!e.ordered)}));
 
     function fillter(){
         let filteredFurniture = furniture;
+        filteredFurniture = filteredFurniture.filter((e) => {return Boolean(!e.ordered)});
         if(category && category != "None"){
             // console.log("entered category");
             filteredFurniture = filteredFurniture.filter((e) => {return e.category == category});

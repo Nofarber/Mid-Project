@@ -36,7 +36,7 @@ const navigate = useNavigate()
         matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v)||'Username must contain only letters, numbers and _',
       } })} />
   {errors.username?.message && (
-    <small className="error-massage">{errors.username.message}</small>)}
+    <small className="error-massage">{errors.userName.message}</small>)}
     </label>
     <label>
       <p>:סיסמא</p>

@@ -34,6 +34,13 @@ function HomePage() {
       function NewestFurniture(){
         setOrderedByNew(furniture.sort((a,b)=>a.publishDate < b.publishDate ? 1 : -1).slice(0,4))
       }
+
+      function RemoveFromOrdered(value) {
+        const tempUser = {...infoOfConnected , pickUpTime:infoOfConnected.pickUpTime.filter((e)=>e.title !== value.title)}
+        const tempFurniture = furniture.find((e)=>e.title === value.title)
+        credintials.UpdateUser(tempUser)
+        furnitureData.UpdateFurniture({ ...tempFurniture, ordered: false })       
+      }
       
       function WhoIsConnected() {
         const tempFurnArray = []
@@ -49,6 +56,8 @@ function HomePage() {
   setPickUpFurniture(tempFurnArray2)
 }
 
+useEffect(()=>{WhoIsConnected(),NewestFurniture()},[users])
+
 return (
   <>
     <div id="entire-page">
@@ -57,25 +66,25 @@ return (
     <h2>:ראה מה חדש במחסן</h2>
       </div>
     <div className="product-container orders" id="new-container">
-    <div className="new-products">{orderedByNew.map((value,i)=><ProductCard key={i} info={value}/>)}</div>
+    <div className="new-products">{orderedByNew.map((value,i) => <ProductCard key={i} info={value}/>)}</div>
     </div>
     <div className="orders">
     <h2>:הזמנות</h2>
     <ul>
-      {pickUpFurniture[0] && orderedFurniture.map((value,i)=>
+      {pickUpFurniture[0] ? orderedFurniture.map((value,i)=>
       <li key={i} className="li-ordered">
         <p>
         <h2 >{`${value.title}`}</h2>
         <h3 >{`${value.year}/${value.month}/${value.date}`}</h3>
         <h3 >{`${pickUpFurniture[i].address}`}</h3>
+        <button onClick={()=>{RemoveFromOrdered(value)}}>remove</button>
         </p>
         <ProductCard info={pickUpFurniture[i]}/>
       </li>
-      )}
+      ) : <li><h2 style={{color:"gray" ,textDecoration:"dashed"}}>nothing in your order list</h2></li>}
     </ul>
     </div>
     <div>
-    <button onClick={()=>console.log(orderedFurniture)}>test</button>
     <h2>:המועדפים שלך</h2>
     </div >
     <div className="product-container" id="fav-container">

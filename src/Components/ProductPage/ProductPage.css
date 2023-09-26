@@ -1,6 +1,7 @@
 .picture{
     height: fit-content;
-    width: 400px;
+    width: 80vw;
+    max-width: 400px;
     border: 4px black solid;
 }
 
@@ -15,12 +16,17 @@
 }
 
 #time-input-text{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+}
+
+#time-input-text p{
     width: fit-content;
     font-size: 25px;
     border: 0px;
     text-align: right;
     background-color: whitesmoke;
-    margin-right: 20px;
     margin-top: 00px;   
     margin-bottom: 00px;   
 }
@@ -29,6 +35,7 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    flex-wrap: wrap;
     width:100vw;
     font-size: 20px;
     border: 0px;
@@ -36,6 +43,7 @@
     background-color: whitesmoke;
     padding-bottom: 20px;
     padding-right: 20px;
+    max-width: 80vw;
     
 }
 
@@ -52,7 +60,7 @@
 }
 
 #entire-page-product-page{
-    width: 90vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -60,10 +68,16 @@
     text-align: right;
 }
 
+#entire-page-product-page section{
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
+
 #product-img-container{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    flex-wrap: wrap;
     background-color: #37F715;
     width: 100vw;
     padding-top: 50px;
@@ -71,35 +85,43 @@
 }
 
 #product-descripition{
-    font-size: 30px;
+    font-size: inherit;
     color: black;
-    margin-right: 30px;
     margin-top: 00px;
+    max-width: 80vw;
+    margin-right: 10px;
 }
 
 #description-container{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    height: inherit;
 }
 
 #img-container{
-    height: 315px;
+    height: fit-content;
+    min-height: 315px;
     width: fit-content;
     background-color: rgba(0, 0, 0, 0.783);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
 }
 
-#calender-container{
+#calender-section{
     display: flex;
     justify-content: right;
-    width: 100vw;
+    width: 90vw;
     background-color: whitesmoke;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-right: 20px;
+    padding-left: 10vw;
+}
+
+#calender-container{
+    width: 80vw;
+    max-width: 410px;
 }
 
 #pic-index{

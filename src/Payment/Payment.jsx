@@ -13,7 +13,7 @@ import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import {  FormControlLabel, IconButton, Radio, RadioGroup, Snackbar } from '@mui/material';
 import { useCredentials } from '../context';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Payment() {
     const userData = useCredentials();
@@ -45,7 +45,8 @@ export default function Payment() {
                         if (saveCard) {
                             if (userData.isConnected) {
                                 const tempUser = { ...userData.currentUser, cardInfo: { cardNumber, cardDate, cardCVV, cardName } }
-                                userData.setCurrentUser(tempUser)
+                                userData.setCurrentUser(tempUser);
+                                userData.UpdateUser(userData.currentUser);
                             } else {
                                 return alert("Log in to save card")
                             }
