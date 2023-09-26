@@ -68,20 +68,6 @@ const UserProvider = ({ children }) => {
       const [currentUser, setCurrentUser] = useState(
       JSON.parse(localStorage.getItem("isConnected")) || Boolean(false)
       )
-      
-      const [currentUser, setCurrentUser] = useState(
-        JSON.parse(localStorage.getItem("currentUser")) || {}
-        );
-        
-        const createNewUser = (newUser) => {
-          setUsers((prev) => {
-            if (prev.some((user) => user.userName === newUser.userName)) {
-              return prev,
-              alert('user already exsists')
-            }
-            localStorage.setItem("users", JSON.stringify([...prev, newUser]));
-            return [...prev, newUser];
-        );
         
         const createNewUser = (newUser) => {
           setUsers((prev) => {
@@ -115,9 +101,11 @@ const UserProvider = ({ children }) => {
       };
       
       const UpdateUser = (info)=>{
-        setUsers(info)
-        localStorage.setItem("users", JSON.stringify(info))
-        return [info]
+        const tempUsersArray = users.filter((e)=> e.userName !== info.userName)
+        tempUsersArray.push(info)
+        setUsers(tempUsersArray)
+        localStorage.setItem("users", JSON.stringify(tempUsersArray))
+        return [tempUsersArray]
       }
 
         
