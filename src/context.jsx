@@ -126,9 +126,11 @@ const UserProvider = ({ children }) => {
       };
       
       const UpdateUser = (info)=>{
-        setUsers(info)
-        localStorage.setItem("users", JSON.stringify(info))
-        return [info]
+        const tempUsersArray = users.filter((e)=> e.userName !== info.userName)
+        tempUsersArray.push(info)
+        setUsers(tempUsersArray)
+        localStorage.setItem("users", JSON.stringify(tempUsersArray))
+        return [tempUsersArray]
       }
 
         
