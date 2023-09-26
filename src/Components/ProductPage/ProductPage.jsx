@@ -31,30 +31,31 @@ function ProductPage() {
  }},[])
   
   function FindCurrentUser (){
-    if (credentials.isConnected){
+    if (isSomeOneConnected){
     const tempUsersArray = users
     const indexOfUser = tempUsersArray.findIndex((user)=>user.userName === connected.userName)
     tempUsersArray[indexOfUser].pickUpTime? tempUsersArray[indexOfUser].pickUpTime = [...tempUsersArray[indexOfUser].pickUpTime, selectedDate]: tempUsersArray[indexOfUser].pickUpTime = [selectedDate]; 
-    update([...tempUsersArray])
-    Navigate('/confirmOrder')}
+    update(tempUsersArray[indexOfUser])
+    Navigate('/home')
+    return alert('Order confirmed!')}
     else{
       return alert('You need to sign-in in order to claim a donation.')
     }
   }
 
   const AddToFavorites=()=>{
-    if (credentials.isConnected){
+    if (isSomeOneConnected){
       const tempUsersArray = users
       const indexOfUser = tempUsersArray.findIndex((user)=>user.userName === connected.userName)
       const text = users[indexOfUser].favorites;
       if (text.includes(info.furnitureID)){
         tempUsersArray[indexOfUser].favorites? tempUsersArray[indexOfUser].favorites = [...tempUsersArray[indexOfUser].favorites.filter((v)=>v!== info.furnitureID)]: tempUsersArray[indexOfUser].favorites = [info.furnitureID]; 
-        update([...tempUsersArray])
+        update(tempUsersArray[indexOfUser])
         setFavButtonBG('whitesmoke')
         console.log(`${info.title} removed from ${tempUsersArray[indexOfUser].userName}'s wishlist!`);
       } else{
         tempUsersArray[indexOfUser].favorites? tempUsersArray[indexOfUser].favorites = [...tempUsersArray[indexOfUser].favorites, info.furnitureID]: tempUsersArray[indexOfUser].favorites = [info.furnitureID]; 
-        update([...tempUsersArray])
+        update(tempUsersArray[indexOfUser])
         setFavButtonBG('#00802D')
         console.log(`${info.title} added to ${tempUsersArray[indexOfUser].userName}'s wishlist!`);
       }} else{
@@ -80,11 +81,11 @@ function SwichPic() {
 <div id="entire-page-product-page">
   <div style={{height:"68px"}}></div>
 <h1>{info.title}</h1>
-{/* {users.some(v=>v.favorites.includes(info.furnitureID))&&<h3>in wishlis</h3>} */}
   <button id="add-favorite-button" style={{backgroundColor: favButtonBG}} type="button" onClick={()=>{AddToFavorites()}}>מועדפים</button>
 <div id="product-img-container">
   <div id="img-container">
 <img src={info.photo[picIndex]} alt="not found" onClick={SwichPic} className="picture"/>
+<h3 id="pic-index">{`${picIndex + 1} / ${info.photo.length}`}</h3>
   </div>
 <div id="description-container">
 <p id="product-descripition">{info.discription}</p>
@@ -101,13 +102,12 @@ function SwichPic() {
 <Calendar onClickDay={SelectNewDate} value={selectedDate} minDate={new Date}/>
 </div>
 {selectedDate.year&& <div id="time-input-container">
-<p style={{fontSize:"30px",marginTop:'0px'}}>{`${weakDays[selectedDate.day]} - ${selectedDate.year}/${selectedDate.month}/${selectedDate.date}`}</p>
+<p style={{fontSize:"30px",margin:'0px'}}>{`${weakDays[selectedDate.day]} - ${selectedDate.year}/${selectedDate.month}/${selectedDate.date}`}</p>
   <p id="time-input-text">:שעה</p>
   <input id="time-input" type="number" max={59} min={0} value={minutes} onChange={(e)=>setMinutes(e.target.value)}/>
   <span>:</span>
   <input id="time-input" type="number" max={23} min={0} value={hours} onChange={(e)=>setHours(e.target.value)}/>
   <button id="confirm-order-button" type="button" onClick={()=>{FindCurrentUser()}}>!הזמן</button>
-  <button id="add-favorite-button" type="button" onClick={()=>{console.log(users);}}>test</button>
   </div>}
 </div>
 </>

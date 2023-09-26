@@ -21,6 +21,8 @@ function Donate() {
       newFurniture.photo = selectedImage
       newFurniture.publishDate = `${(new Date).getDate()}/${(new Date).getMonth() +1 }/${(new Date).getFullYear()}`
       CreateNewFurniture(newFurniture)
+      navigate('/')
+      return alert(`Thank you for your donation! ${newFurniture.title} has been added to the catalog!`)
     }
 
    
