@@ -38,15 +38,15 @@ function Catalog() {
     function fillter(){
         let filteredFurniture = furniture;
         if(category && category != "None"){
-            console.log("entered category");
+            // console.log("entered category");
             filteredFurniture = filteredFurniture.filter((e) => {return e.category == category});
         }
         if (color && color != "None") {
-            console.log("entered color");
+            // console.log("entered color");
             filteredFurniture = filteredFurniture.filter((e) => {return e.color == color})
         }
         if (condition && condition != "None") {
-            console.log("entered condition");
+            // console.log("entered condition");
             filteredFurniture = filteredFurniture.filter((e) => {return e.condition == condition})
         }
         setDisplayed(filteredFurniture);
@@ -148,7 +148,7 @@ function Catalog() {
                         </DialogActions>
                     </Dialog>
                 </div>
-                <Grid container display="flex" justifyContent="space-around" alignItems="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Grid container sx={{width: "fullWidth"}} display="flex" justifyContent="space-around" alignItems="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {displayed.map((value, i) => <ProductCard key={i} info={value} />)}
                 </Grid>
             </Box>

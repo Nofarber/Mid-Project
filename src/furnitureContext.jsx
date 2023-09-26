@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
-// import MockFurniture from '../MOCK_FURNITURE.json' 
-import MockFurniture from '../BIG_MOCK_FURNITURE.json' 
+import MockFurniture from '../MOCK_FURNITURE.json' 
+// import MockFurniture from '../BIG_MOCK_FURNITURE.json' 
 
 export const FurnitureContext = createContext({
     furniture: [ ],

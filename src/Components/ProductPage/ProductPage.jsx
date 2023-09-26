@@ -9,7 +9,7 @@ import { useCredentials } from "../../context"
 
 function ProductPage() {
   const location = useLocation()
-  const info = location.state
+  const info = location.state.info
   const [picIndex,setPicIndex]=useState(0)
   const [minutes,setMinutes]=useState(0)
   const [hours,setHours]=useState(16)
