@@ -32,6 +32,7 @@ export const UserContext = createContext({
 
 export const useCredentials = () => {
   return useContext(UserContext)
+  return useContext(UserContext)
 }
 
 
@@ -59,7 +60,12 @@ const UserProvider = ({ children }) => {
     ]
     );
     
+    
     const [isConnected, setIsConnected] = useState(
+      JSON.parse(localStorage.getItem("isConnected")) || Boolean(false)
+      )
+      
+      const [currentUser, setCurrentUser] = useState(
       JSON.parse(localStorage.getItem("isConnected")) || Boolean(false)
       )
       
@@ -75,17 +81,27 @@ const UserProvider = ({ children }) => {
             }
             localStorage.setItem("users", JSON.stringify([...prev, newUser]));
             return [...prev, newUser];
+        );
+        
+        const createNewUser = (newUser) => {
+          setUsers((prev) => {
+            if (prev.some((user) => user.userName === newUser.userName)) {
+              return prev,
+              alert('user already exsists')
+            }
+            localStorage.setItem("users", JSON.stringify([...prev, newUser]));
+            return [...prev, newUser];
       });
     };
-    
+
     const login = ({ username, password, staySignedIn }) => {
-      console.log(username);
-      console.log(password);
-      console.log(users);
-      const userExists = users.find((user) => user.userName === username);
-      if (!userExists) {
-        return alert("Wrong credentials!");
-      }
+        console.log(username);
+        console.log(password);
+        console.log(users);
+        const userExists = users.find((user) => user.userName === username);
+        if (!userExists) {
+            return alert("Wrong credentials!");
+        }
         const passwordMatch = userExists.password === password;
         if (!passwordMatch) {
           return alert("Wrong credentials!");

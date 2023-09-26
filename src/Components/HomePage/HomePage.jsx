@@ -5,6 +5,7 @@ import ProductCard from '../ProductCard/ProductCard'
 import { useEffect } from "react"
 import './HomePage.css'
 import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function HomePage() {
   const nav = useNavigate()
@@ -51,6 +52,8 @@ function HomePage() {
 
 
 
+return (
+  <>
 return (
   <>
     <div id="entire-page">
