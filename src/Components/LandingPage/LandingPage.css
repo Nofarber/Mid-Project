@@ -62,7 +62,8 @@
     top: 0px;
 }
 #hero-section2{
-    width:1000px;
+    width: 80vw;
+    max-width:1000px;
 }
 
 #vid-container{
