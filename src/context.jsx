@@ -28,32 +28,6 @@ export const UserContext = createContext({
   login: () => { },
   logout: () => { },
   UpdateUser: ()=>{}
-  users: [
-    {
-      userName: 'bob',
-      password: '1234',
-      mail: '',
-      firstName: '',
-      lastName: '',
-      enlistment: 'new Date',
-      discharge: new Date,
-      tashType: '',
-      roll: '',
-      userID: '',
-      phoneNumber: 0,
-      favorites: [],
-      pickUpTime: []
-    }
-  ],
-  isConnected: Boolean,
-  setIsConnected: () => { },
-  currentUser: {},
-  setCurrentUser: () => { },
-  setUsers: () => { },
-  createNewUser: () => { },
-  login: () => { },
-  logout: () => { },
-  UpdateUser: ()=>{}
 });
 
 export const useCredentials = () => {
