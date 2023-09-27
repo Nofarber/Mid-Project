@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { useFurniture } from "../../furnitureContext"
 import { useEffect, useState } from "react"
-import './productPage.css'
+import './ProductPage.css'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
 import { useCredentials } from "../../context"
