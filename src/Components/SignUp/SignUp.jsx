@@ -26,10 +26,10 @@ const navigate = useNavigate()
   return (
     <>
     <div id="entire-page-signup">
-      <h1>!הירשם</h1>
-    <form onSubmit={handleSubmit(OnSubmit)} id="main-form">
+      <h1>Sign up!</h1>
+    <form onSubmit={handleSubmit(OnSubmit)} id="main-form-signup">
     <label>
-      <p>:שם משתמש</p>
+      <p>Username:</p>
      <input type="text" placeholder="username" {...register('userName', { required: 'Username is required', validate: {
         minLength: (v) => v.length >= 5 || 'The username should have at least 5 characters',
         maxLength: (v) => v.length <= 15 || 'The username should have less than 15 characters',
@@ -39,7 +39,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.userName.message}</small>)}
     </label>
     <label>
-      <p>:סיסמא</p>
+      <p>Password:</p>
      <input type="text" placeholder="password" {...register('password', { required: 'password is required', validate: {
         minLength: (v) => v.length >= 8 || 'The password should have at least 8 characters',
       }})} />
@@ -47,7 +47,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.password.message}</small>)}
     </label>
     <label>
-      <p>:שם פרטי</p>
+      <p>First name:</p>
      <input type="text" placeholder="first name" {...register('firstName', { required: 'first name is required', validate: {
         matchPattern: (v) => /^[a-zA-Z-]+$/.test(v)||'first name must contain only letters',
         maxLength: (v) => v.length <= 20 || 'The first name should have less than 20 characters',
@@ -56,7 +56,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.firstName.message}</small> )}
     </label>
     <label>
-      <p>:שם משפחה</p>
+      <p>Last name:</p>
      <input type="text" placeholder="last name" {...register('lastName', { required: 'last name is required', validate: {
         matchPattern: (v) => /^[a-zA-Z-]+$/.test(v)||'last name must contain only letters',
         maxLength: (v) => v.length <= 20 || 'The last name should have less than 20 characters',
@@ -65,7 +65,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.lastName.message}</small> )}
     </label>
     <label>
-      <p> :מייל</p>
+      <p>Mail:</p>
      <input type="text" placeholder="user@email.com" {...register('mail', { required: "Email is required", validate: {
         maxLength: (v) =>
           v.length <= 50 || "The email should have at most 50 characters",
@@ -90,7 +90,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.phoneNumber.message}</small> )}
     </label>
     <label>
-      <p> :תפקידך בצה"ל</p>
+      <p>IDF roll:</p>
      <input type="text" placeholder="millitary roll" {...register('roll', { required: 'millitary roll is required', validate: {
         minLength: (v) => v.length >= 5 || 'The millitary roll should have at least 5 characters',
         matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v)||'millitary rol must contain only letters, numbers and _',
@@ -99,7 +99,7 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.roll.message}</small>)}
     </label>
     <label>
-     <p>:ת"ש </p>
+     <p>Spacial service conditions:</p>
      <select  {...register('tashType', { required: 'tash is required', })}>
       <option>none</option>
       <option>lone soldier</option>
@@ -113,18 +113,18 @@ const navigate = useNavigate()
     <small className="error-massage">{errors.tashType.message}</small> )}
     </label>
     <label >
-    <p>:תאריך גיוס</p>
+    <p>Date of enlistment:</p>
     <input type="date"  {...register('enlistment', { required: 'required'})} />
     {errors.enlistment?.message && (
     <small className="error-massage">{errors.enlistment.message}</small> )}
     </label>
     <label >
-    <p>:תאריך שחרור</p>
+    <p>Date of discharge:</p>
     <input type="date"  {...register('discharge', { required: 'required'})} />
     {errors.discharge?.message && (
     <small className="error-massage">{errors.discharge.message}</small> )}
     </label>
-    <button type="submit" id="submit-button">!הירשם</button>
+    <button type="submit" id="submit-button">Sign up!</button>
     </form>
     </div>
     </>

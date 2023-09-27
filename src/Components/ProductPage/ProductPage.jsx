@@ -80,8 +80,9 @@ function ProductPage() {
       }
     }
   }, [])
-
+  
   function FindCurrentUser() {
+    console.log(info.ordered);
     if (isSomeOneConnected) {
       if(!info.ordered){
         const tempUsersArray = users
@@ -101,7 +102,7 @@ function ProductPage() {
   }
 
   const [selectedDate, onSelectedDate] = useState(new Date());
-  const weakDays = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"]
+  const weakDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
   const SelectNewDate = (e) => {
     onSelectedDate({ year: e.getFullYear(), month: e.getMonth() + 1, date: e.getDate(), day: e.getDay(), hour: hours, minutes: minutes, title: info.title })
@@ -131,17 +132,17 @@ function ProductPage() {
           </div>
           <div id="description-container">
             <p id="product-descripition">{info.discription}</p>
-            {info.description && <p id="product-descripition">{`${info.description} :תיאור`}</p>}
-            {info.category && <p id="product-descripition">{`${info.category} :קטגוריות`}</p>}
-            {info.color && <p id="product-descripition">{`${info.color} :צבע`}</p>}
-            {info.publishDate && <p id="product-descripition">{`${info.publishDate} :פורסם בתאריך`}</p>}
-            {info.collect === 'from wherehouse' ? <p id="product-descripition">{`.איסוף מהמחסן`}</p> : <p id="product-descripition">{`${info.address} :איסוף מכתובת`}</p>}
-            {info.donerName && <p id="product-descripition">{`${info.donerName} :נתרם על ידי`}</p>}
-            {info.donerPhone && <p id="product-descripition">{`${info.donerPhone} :טלפון`}</p>}
+            {info.description && <p id="product-descripition">{`Description: ${info.description}`}</p>}
+            {info.category && <p id="product-descripition">{`Category: ${info.category}`}</p>}
+            {info.color && <p id="product-descripition">{`Color: ${info.color}`}</p>}
+            {info.publishDate && <p id="product-descripition">{`Publish date: ${info.publishDate}`}</p>}
+            {info.collect === 'from wherehouse' ? <p id="product-descripition">{`Pickup from wherehouse`}</p> : <p id="product-descripition">{`Pickup from address: ${info.address}`}</p>}
+            {info.donerName && <p id="product-descripition">{`Donated by: ${info.donerName}`}</p>}
+            {info.donerPhone && <p id="product-descripition">{`Doner's phone: ${info.donerPhone}`}</p>}
           </div>
         </section>
         <section>
-          <h2>תאם איסוף</h2>
+          <h2>Order pickup</h2>
         </section>
 
         <section id="calender-section">
@@ -150,14 +151,14 @@ function ProductPage() {
           </div>
         </section>
         {selectedDate.year && <section id="time-input-container">
-          <p style={{ fontSize: "30px", margin: '0px' }}>{`${weakDays[selectedDate.day]} - ${selectedDate.year}/${selectedDate.month}/${selectedDate.date}`}</p>
+          <p style={{ fontSize: "40px", margin: '10px' }}>{`${weakDays[selectedDate.day]} - ${selectedDate.year}/${selectedDate.month}/${selectedDate.date}`}</p>
           <div id="time-input-text">
-            <p>:שעה</p>
-            <input id="time-input" type="number" max={59} min={0} value={minutes} onChange={(e) => setMinutes(e.target.value)} />
-            <span>:</span>
+            <p>at:</p>
             <input id="time-input" type="number" max={23} min={0} value={hours} onChange={(e) => setHours(e.target.value)} />
+            <span>:</span>
+            <input id="time-input" type="number" max={59} min={0} value={minutes} onChange={(e) => setMinutes(e.target.value)} />
           </div>
-          <button id="confirm-order-button" type="button" onClick={() => { FindCurrentUser() }}>!הזמן</button>
+          <button id="confirm-order-button" type="button" onClick={() => { FindCurrentUser() }}>Order!</button>
         </section>}
       </div>
     </>

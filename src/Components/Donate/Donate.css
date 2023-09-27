@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: start;
 }
 
 .single-photo{
@@ -53,17 +53,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     background-color: rgba(0, 0, 0, 0.174);
     padding: 20px;
     border-radius: 20px;
     width: 400px;
-    margin-top: 100px;
-    
+    max-width: 80vw;
+
 }
 
 #donate-page p{
-    text-align: end;
     color: #00802D;
     font-size: 20px;
     margin-bottom: 0px;
@@ -87,7 +86,8 @@
     padding: 10px; 
     border: 1px solid #ccc; 
     outline: none;  
-    width: 370px;
+    width: 60vw;
+    max-width: 350px;
 }
 
   #entire-page-donate{
@@ -96,11 +96,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
 }
 
 #main-form label{
     margin: 20px;
+}
+
+#main-form #photo-div label{
+    margin: 10px;
 }
 
 #submit-button2{
@@ -115,8 +118,8 @@
 
 
 #donate-page input{
-    width: 100%;
-    max-width: 220px;
+    width: 60vw;
+    max-width: 350px;
     height: 45px;
     padding: 12px;
     border-radius: 12px;
@@ -137,4 +140,8 @@
 
   #donate-page input:focus {
     border: 2px solid grey;
+  }
+
+  #donate-page{
+    margin-top: 100px;
   }

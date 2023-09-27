@@ -68,9 +68,10 @@ function Donate() {
          return (
            <>
            <div id="donate-page">
+       <h1>Donate!</h1>
       <form onSubmit={handleSubmit(OnSubmit)} id="main-form" >
       <label>
-        <p>:שם המוצר</p>
+        <p>Title:</p>
       <input type="text" placeholder="title" {...register('title', { required: 'title is required', validate: {
         minLength: (v) => v.length >= 5 || 'The title should have at least 5 characters',
         maxLength: (v) => v.length <= 40 || 'The title should have less than 40 characters',
@@ -79,12 +80,13 @@ function Donate() {
         <small className="error-massage">{errors.title.message}</small>)}
       </label>
       <label>
-        <p>:תיאור המוצר</p>
+        <p>Description:</p>
       <input type="text" id="descirtion" {...register('description', { required: 'discription is required'})} />
       {errors.discription?.message && (
         <small className="error-massage">{errors.title.message}</small>)}
       </label>
-        <p>:הוסף תמונה</p>
+      <label>
+        <p>Add photo:</p>
       <button type="button" onClick={()=>handleClick()}>add photo</button>
       <div id="photo-div">
       {selectedImage.map((value,i)=>
@@ -93,8 +95,9 @@ function Donate() {
           <button type="button" className="delete-button" onClick={()=>setSelectedImage(selectedImage.filter((value)=>value!==selectedImage[i]))}>delete</button>
         </label>)}
       </div>
+          </label>
       <label>
-        <p>:סוג המוצר</p>
+        <p>Category</p>
         <select  {...register('category')}>
         <option value="Sofas">Sofas</option>
         <option value="Beds">Beds</option>
@@ -104,7 +107,7 @@ function Donate() {
       </select>
       </label>
       <label>
-        <p>:מצב</p>
+        <p>Condition:</p>
         <select  {...register('condition')}>
         <option value="Like New">Like New</option>
         <option value="Excellent">Excellent</option>
@@ -114,7 +117,7 @@ function Donate() {
       </select>
       </label>
       <label>
-      <p>:צבע</p>
+      <p>Color</p>
       <select  {...register('color')}>
         <option value="Red">Red</option>
         <option value="Orange">Orange</option>
@@ -131,7 +134,7 @@ function Donate() {
       </select>
       </label>
       <label>
-      <p>:איסוף</p>
+      <p>Pick from:</p>
       <select  {...register('collect',{ required: 'required'})}>
         <option value="blue">from wherehouse</option>
         <option value="red">from my address</option>
@@ -140,7 +143,7 @@ function Donate() {
         <small className="error-massage">{errors.title.message}</small>)}
       </label>
       <label>
-        <p>:שם התורם</p>
+        <p>Doner's name:</p>
       <input type="text" placeholder="name" {...register('donerName', { required: 'name is required', validate: {
         minLength: (v) => v.length >= 1 || 'The name should have at least 1 characters',
         maxLength: (v) => v.length <= 20 || 'The name should have less than 20 characters',
@@ -149,7 +152,7 @@ function Donate() {
         <small className="error-massage">{errors.donerName.message}</small>)}
       </label> 
       <label>
-        <p>:טלפון</p>
+        <p>Phone number:</p>
      <input type="text" placeholder="050-0000000" {...register('donerPhone', { required: "phone number is required", validate: {
        maxLength: (v) =>
        v.length <= 50 || "The phone number should have at most 50 characters",
@@ -161,7 +164,7 @@ function Donate() {
     <small className="error-massage">{errors.donerPhone.message}</small> )}
     </label>     
       <label>
-        <p>:כתובת</p>
+        <p>Address:</p>
       <input type="text" placeholder="address" {...register('address', { required: 'address is required', validate: {
         minLength: (v) => v.length >= 5 || 'The address should have at least 5 characters',
         maxLength: (v) => v.length <= 40 || 'The address should have less than 40 characters',

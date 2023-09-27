@@ -1,20 +1,20 @@
 .new-products{
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: start;
     flex-wrap: wrap;
     padding-right: 0px;
 }
 
 #entire-page .MuiPaper-root{
-    margin-right: 20px !important;
+    margin-left: 20px !important;
 }
 
 #entire-page{
     margin-top: 100px;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: start;
     justify-content: baseline;
 }
 
@@ -24,7 +24,7 @@
     right: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: start;
     flex-wrap: wrap;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -37,7 +37,6 @@
 }
 
 .orders{
-    text-align: right;
     margin-bottom: 100px;
 }
 
@@ -52,11 +51,11 @@
 }
 
 .li-ordered p{
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .orders ul{
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: start;
 }

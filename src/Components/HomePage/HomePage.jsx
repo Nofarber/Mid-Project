@@ -62,30 +62,31 @@ return (
   <>
     <div id="entire-page">
       <div>
-    <h1>!ברוך הבא</h1>
-    <h2>:ראה מה חדש במחסן</h2>
+    <h1>Welcome {`${currentUser.userName}`}</h1>
+    <h2>See whats new:</h2>
       </div>
     <div className="product-container orders" id="new-container">
     <div className="new-products">{orderedByNew.map((value,i) => <ProductCard key={i} info={value}/>)}</div>
     </div>
     <div className="orders">
-    <h2>:הזמנות</h2>
+    <h2>Your orders:</h2>
     <ul>
       {pickUpFurniture[0] ? orderedFurniture.map((value,i)=>
       <li key={i} className="li-ordered">
+        <ProductCard info={pickUpFurniture[i]}/>
         <p>
         <h2 >{`${value.title}`}</h2>
         <h3 >{`${value.year}/${value.month}/${value.date}`}</h3>
+        <h3 >{`${value.hour}/${value.minutes}`}</h3>
         <h3 >{`${pickUpFurniture[i].address}`}</h3>
         <button onClick={()=>{RemoveFromOrdered(value)}}>remove</button>
         </p>
-        <ProductCard info={pickUpFurniture[i]}/>
       </li>
       ) : <li><h2 style={{color:"gray" ,textDecoration:"dashed"}}>nothing in your order list</h2></li>}
     </ul>
     </div>
     <div>
-    <h2>:המועדפים שלך</h2>
+    <h2>Your wishlist:</h2>
     </div >
     <div className="product-container" id="fav-container">
     <div className="new-products">{favoritesFurniture.map((value,i)=><ProductCard key={i} info={value}/>)}</div> 
