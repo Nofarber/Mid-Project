@@ -20,7 +20,8 @@ import { Link } from 'react-router-dom';
 
 
 const pages = ['Home', 'Catalog', 'Donate', 'Money Donation'];
-const settings = ['Profile', 'Logout'];
+const settings = ['Logout'];
+// 'Profile', 
 
 function Navbar() {
     const userData = useCredentials();
@@ -68,14 +69,11 @@ function Navbar() {
         <AppBar position="fixed" sx={{ bgcolor: "#00802D" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <button onClick={() => { userData.setIsConnected("true") }}>true</button>
-                    <button onClick={() => { userData.setIsConnected("") }}>false</button> */}
 
 
                     {/* logo */}
 
 
-                    {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                     <Typography
                         variant="h6"
                         noWrap
@@ -129,7 +127,7 @@ function Navbar() {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" onClick={() => { navigate(`/${page}`) }}>{page}</Typography>
+                                    <Typography textAlign="center" onClick={() => { (!isConnected && page==='Home' ? alert("Please log in!") : navigate(`/${page}`)), handleCloseNavMenu }}>{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -163,7 +161,6 @@ function Navbar() {
                             <Button
                                 key={page}
                                 onClick={() => { (!isConnected && page==='Home' ? alert("Please log in!") : navigate(`/${page}`)), handleCloseNavMenu }}
-                                // onClick={() => { navigate(`/${page}`) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
@@ -197,13 +194,12 @@ function Navbar() {
                                     open={Boolean(anchorElUser)}
                                     onClose={handleCloseUserMenu}
                                 >
-                                    {/* {settings.map((setting) => (
-                            ))} */}
-                                    <MenuItem key={settings[0]} onClick={() => { navigate("/Profile"), handleCloseUserMenu }}>
+                                    {/* Other profile menu options! */}
+                                    {/* <MenuItem key={settings[0]} onClick={() => { navigate("/Home"), handleCloseUserMenu }}>
                                         <Typography textAlign="center">{settings[0]}</Typography>
-                                    </MenuItem>
-                                    <MenuItem key={settings[1]} onClick={() => { handleCloseUserMenu,navigate("/"), userData.logout() }}>
-                                        <Typography textAlign="center">{settings[1]}</Typography>
+                                    </MenuItem> */}
+                                    <MenuItem key={settings[0]} onClick={() => { handleCloseUserMenu, setAnchorElUser(null),setAnchorElLogin(null), navigate("/"), userData.logout() }}>
+                                        <Typography textAlign="center">{settings[0]}</Typography>
                                     </MenuItem>
                                 </Menu>
                             </>) : //while logged out!
@@ -216,7 +212,6 @@ function Navbar() {
                                         sx={{ mt: '45px' }}
                                         id="login-menu"
                                         anchorEl={anchorElLogin}
-                                        // TransitionComponent={Grow}
                                         anchorOrigin={{
                                             vertical: 'top',
                                             horizontal: 'right',
@@ -229,9 +224,7 @@ function Navbar() {
                                         open={Boolean(anchorElLogin)}
                                         onClose={handleCloseLoginMenu}
                                     >
-                                        {/* <MenuItem onClick={() => { }}>
-                                            <TextField onChange={(e) => { setInputUserName(e.target.value) }} id="usernameInput" label="User name" variant="standard" />
-                                        </MenuItem> */}
+                                    
                                         <MenuItem >
                                             <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
                                                 <InputLabel>User name</InputLabel>
@@ -242,9 +235,7 @@ function Navbar() {
                                                 />
                                             </FormControl>
                                         </MenuItem>
-                                        {/* <MenuItem onClick={() => { }}>
-                                            <TextField onChange={(e) => { setInputPassword(e.target.value) }} id="passwordInput" label="Password" variant="standard" />
-                                        </MenuItem> */}
+                                        
                                         <MenuItem >
                                             <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
                                                 <InputLabel>Password</InputLabel>
@@ -269,7 +260,6 @@ function Navbar() {
                                         <MenuItem>
                                             <FormControlLabel control={
                                                 <Checkbox 
-                                                // defaultChecked 
                                                 checked={staySignedIn}
                                                 onChange={(event) => {setStaySignedIn(event.target.checked)}}
                                                 sx={{
@@ -282,7 +272,8 @@ function Navbar() {
                                             />
                                         </MenuItem>
                                         <MenuItem >
-                                            <Button onClick={() => { userData.login({ username: inputUserName, password: inputPassword, staySignedIn }) }} variant="contained" endIcon={<LoginIcon />} fullWidth sx={{
+                                            <Button onClick={() => { userData.login({ username: inputUserName, password: inputPassword, staySignedIn }), setAnchorElUser(null),setAnchorElLogin(null) }} 
+                                            variant="contained" endIcon={<LoginIcon />} fullWidth sx={{
                                                 ':hover': {
                                                     bgcolor: "#37F715",
                                                     color: 'white',
