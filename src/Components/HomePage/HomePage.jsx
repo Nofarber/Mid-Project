@@ -76,8 +76,8 @@ return (
         <ProductCard info={pickUpFurniture[i]}/>
         <p>
         <h2 >{`${value.title}`}</h2>
-        <h3 >{`${value.year}/${value.month}/${value.date}`}</h3>
-        <h3 >{`${value.hour}/${value.minutes}`}</h3>
+        <h3 >{`${value.date}/${value.month}/${value.year}`}</h3>
+        <h3 >{`${value.hour}:${value.minutes}`}</h3>
         <h3 >{`${pickUpFurniture[i].address}`}</h3>
         <button onClick={()=>{RemoveFromOrdered(value)}}>remove</button>
         </p>

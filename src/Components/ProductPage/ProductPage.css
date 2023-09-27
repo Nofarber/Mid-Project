@@ -71,7 +71,7 @@
     align-items: center;
     flex-wrap: wrap;
     background-color: #37F715;
-    width: 100vw;
+    width: 80vw;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -82,6 +82,10 @@
     margin-top: 00px;
     max-width: 80vw;
     margin-left: 10px;
+}
+
+#product-descripition span{
+font-weight: bold;
 }
 
 #description-container{
@@ -103,7 +107,7 @@
 
 #calender-section{
     display: flex;
-    width: 90vw;
+    width: 80vw;
     background-color: whitesmoke;
     padding-top: 20px;
     padding-bottom: 20px;
