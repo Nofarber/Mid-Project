@@ -47,7 +47,7 @@ function Donate() {
       console.log(selectedImage),
       ) }
       
-      const presetKey = 'h2jouxfr'
+      const presetKey = import.meta.env.VITE_KEY
       const cloudName = 'dhzuiixyx'
 
       const HandleFile = (event,i)=> {
